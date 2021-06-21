@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Gradebook {
+    Assignments: List
+
+    addStudent()
+    removeStudent()
+    lookupStudentGrades()
+    getAssignmentAverage()
+    getAssignmentScoreRange()
+    getAssignmentScoreMax()
+    getAssignmentScoreMin()
+    getAssignmentScoreStd()
+}
+
+class Assignment {
+    Students: List
+    pointValue: Double
+    title: String
+    dueDate: Date
+
+    getMaxScore()
+    setMaxScore()
+    getStudentScore(Student)
+}
+
+class TimedAssignments {
+    Students: List
+    maxScore: Double
+    title: String
+    dueDate: Date
+    timeLimit: pointValue
+
+    getMaxScore()
+    setMaxScore()
+    getStudentScore(Student)
+}
+
+class Student {
+    AssignmentScores: Map<Assignment, Double>
+}
+
+Gradebook o--> Student
+Student o--> Assignment
+Assignment <|-- TimedAssignment
+
+@enduml

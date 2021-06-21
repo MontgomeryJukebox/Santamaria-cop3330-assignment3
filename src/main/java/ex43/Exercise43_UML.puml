@@ -1,0 +1,35 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class MakeConfig {
+    siteName: String
+    author: String
+    jsDir: boolean
+    cssDir: boolean
+}
+
+class FileCreator {
+    createFile(filename)
+}
+
+class DirCreator {
+    createDir(dirname)
+}
+
+class HTMLWriter {
+    data: String
+    writeHTML(filename)
+}
+
+class App {
+    config: MakeConfig
+    fc: FileCreator
+    dc: DirCreator
+}
+
+App *-- DirCreator
+App *-- FileCreator
+App *-- MakeConfig
+App --o HTMLWriter
+
+@enduml

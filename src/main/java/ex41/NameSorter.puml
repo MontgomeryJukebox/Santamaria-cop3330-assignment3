@@ -1,0 +1,42 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+
+class Data {
+    data: ArrayList<String>
+}
+
+class Reader {
+    file: File
+
+    Reader(file File)
+
+    readFromFile(Data)
+}
+
+class Writer {
+    file: File
+
+    Writer(file File)
+
+    writeToConsole(Data)
+    writeToFile(Data)
+}
+
+class Sorter {
+    Sorter(Data data)
+
+    sort()
+}
+
+File --> Reader : Reader reads from file
+Reader --> Data : Reader writes data to Data instance
+Writer --> File : Writer writes processed data to file
+Data --> Sorter : Sorter processes data
+Writer --> Console : Writer also writes to console
+Sorter --> Writer : Sorter gives processed data to Writer
+
+
+
+
+@enduml

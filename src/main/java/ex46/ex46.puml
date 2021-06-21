@@ -1,0 +1,23 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Histogram {
+    displayHistogram(map: HashMap<String, int>): void
+}
+
+class Frequency {
+    getFrequencies(text: String): HashMap<String, int>
+}
+
+class Loader {
+    loadFile(): String
+}
+
+class App {
+
+}
+
+App *-- Histogram
+App *-- Frequency
+
+@enduml

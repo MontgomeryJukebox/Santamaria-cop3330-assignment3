@@ -1,0 +1,55 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+@startuml
+'https://plantuml.com/class-diagram
+
+class S3 {
+    first: String
+    second: String
+    third: String
+}
+
+class Data {
+    ArrayList<S3> data;
+}
+
+class Lexer {
+    Scanner fileScanner
+
+    Lexer(filepath)
+    nextToken()
+    hasNextToken()
+}
+
+class Parser {
+    parse(Data data)
+}
+
+class App {
+    data: Data
+}
+
+App *-- Data : Application has a data object
+Data *-- S3 : Data is a wrapper around a vector of S3
+Parser o-- Writer : Parser has a reference to the Writer
+Parser --o Data : Parser has a reference to data object in App
+Parser ... Lexer : requests next token >
+Lexer ... Parser : gives next token or EOF >
+Parser *-- Lexer : Parser has a lexer <
+Parser .. Data : Creates a new S3 entry in data
+Lexer o.. InputFile : Lexer reads from input file
+Writer o.. OutputFile : Writer writes to output file
+
+
+class Writer {
+    PrintWriter print
+
+    Writer(filepath)
+
+    printfToConsole(Data)
+    printfToFile(Data)
+}
+
+@enduml
+@enduml

@@ -1,0 +1,26 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Products {
+    name: String
+    price: double
+    quantity: int
+}
+
+class Loader {
+    loadProducts(): Products[]
+}
+
+class Database {
+    products: Products
+}
+
+class App {
+
+}
+
+Loader *-- Database: Database uses Loader
+Loader --* Products: Loader returns a products array for searching
+Database *-- App: App owns a database
+
+@enduml
